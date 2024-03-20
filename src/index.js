@@ -1,6 +1,7 @@
 const express = require("express");
 
 const { ServerConfig, Logger } = require("./config");
+
 const apiRouter = require("./routes");
 
 const app = express();
