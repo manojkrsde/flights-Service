@@ -3,4 +3,7 @@
 .env
 
 combined*.log
+
 node_modules/
+
+src/config/config.json
