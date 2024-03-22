@@ -1,4 +1,5 @@
+
 module.exports = {
-    home: require('./home-controller'),
-    homeNew: require('./home-controller-new')
+    pingCheck: require('./ping.controller'),
+    AirplaneController: require('./airplane.controller')
 }

@@ -1,12 +1,12 @@
 const { StatusCodes } = require('http-status-codes');
 
-const home = (req, res) => {
+function pingCheck(req, res) {
     return res.status(StatusCodes.OK).json({
         success: true,
-        message: "Home rendered successfully",
+        message: "Ping Check successfull",
         error: [],
         data: []
     });
-};
+}
 
-module.exports = home;
+module.exports = pingCheck;
