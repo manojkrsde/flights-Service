@@ -1,5 +1,6 @@
 
-const { Logger } = require('../config')
+const { Logger } = require('../config');
+const { AppError, InternalServerError } = require('../errors/');
 
 class CrudRepository {
 
@@ -8,6 +9,7 @@ class CrudRepository {
     }
 
     async create(data) {
+
         try {
 
             const response = this.model.create(data);
@@ -18,6 +20,7 @@ class CrudRepository {
             Logger.error("Something went wrong in CRUD REPO : create");
             throw error;
         }
+
     }
 
     async destroy(data) {

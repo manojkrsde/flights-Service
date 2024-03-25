@@ -6,6 +6,7 @@ class BaseError extends Error {
 
         super(message);
         this.name = name;
+        this.statusCode = statusCode;
         this.message = message;
         this.details = details;
 

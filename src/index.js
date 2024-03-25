@@ -3,6 +3,7 @@ const express = require("express");
 const { ServerConfig, Logger } = require("./config");
 
 const apiRouter = require("./routes");
+const errorHandler = require('./utils/errorHandler');
 
 const app = express();
 
@@ -16,6 +17,9 @@ app.use(express.text());
 
 // localhost:3000/api/
 app.use('/api', apiRouter);
+
+//last middleware for handling errors
+app.use(errorHandler);
 
 
 app.listen(ServerConfig.PORT, () => {
