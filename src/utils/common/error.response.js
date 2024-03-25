@@ -5,7 +5,9 @@ const error = {
     statusCode: StatusCodes.INTERNAL_SERVER_ERROR,//default
     message: "Something went wrong!!!",
     data: {},
-    error: {}
+    error: {
+        explanation: []
+    }
 };
 
 module.exports = error;

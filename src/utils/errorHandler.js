@@ -8,10 +8,9 @@ function errorHandler(err, req, res, next) {
 
     if (err instanceof BaseError) {
 
-        errorResponse.error = err;
         errorResponse.statusCode = err.statusCode;
         errorResponse.message = err.message;
-        errorResponse.error = err.details;
+        errorResponse.error.explanation = err.details;
 
         return res
             .status(err.statusCode)
