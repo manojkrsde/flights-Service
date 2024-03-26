@@ -115,7 +115,7 @@ async function updateAirplane(req, res, next) {
         });
 
         successResponse.data = await AirplaneService.getAirplane(req.params.id);
-        successResponse.message = "Successfully update Airplane object";
+        successResponse.message = "Successfully updated Airplane object";
         successResponse.statusCode = StatusCodes.OK;
 
         return res

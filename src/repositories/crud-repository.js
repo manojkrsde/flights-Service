@@ -24,7 +24,6 @@ class CrudRepository {
         });
 
         if (!response) {
-            console.log("Erorororor");
             throw new AppError(StatusCodes.NOT_FOUND);
         }
 
@@ -38,7 +37,6 @@ class CrudRepository {
         const response = await this.model.findByPk(id);
 
         if (!response) {
-            console.log("Erorororor");
             throw new AppError(StatusCodes.NOT_FOUND);
         }
         return response;
@@ -60,7 +58,6 @@ class CrudRepository {
         });
 
         if (!response) {
-            console.log("Erorororor");
             throw new AppError(StatusCodes.NOT_FOUND);
         }
 

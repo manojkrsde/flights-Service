@@ -33,7 +33,7 @@ router.delete('/:id', AirplaneController.destroyAirplane);
 /**
  * /api/v1/airplanes/:id : PATCH
  */
-router.put('/:id',
+router.patch('/:id',
     AirplaneController.updateAirplane);
 
 module.exports = router;
