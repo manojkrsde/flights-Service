@@ -8,7 +8,7 @@ const router = express.Router();
  * /api/v1/airplanes : POST
  */
 router.post('/',
-    AirplaneMiddlewares,
+    AirplaneMiddlewares.validateCreateRequest,
     AirplaneController.createAirplane
 );
 
@@ -29,5 +29,12 @@ router.get('/:id', AirplaneController.getAirplane);
  * /api/v1/airplanes/:id : delete
  */
 router.delete('/:id', AirplaneController.destroyAirplane);
+
+/**
+ * /api/v1/airplanes/:id : PATCH
+ */
+router.put('/:id',
+    // AirplaneMiddlewares.validateCreateRequest,
+    AirplaneController.updateAirplane);
 
 module.exports = router;

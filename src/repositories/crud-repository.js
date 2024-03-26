@@ -58,6 +58,12 @@ class CrudRepository {
                 id: key
             }
         });
+
+        if (!response) {
+            console.log("Erorororor");
+            throw new AppError(StatusCodes.NOT_FOUND);
+        }
+
         return response;
 
     }
