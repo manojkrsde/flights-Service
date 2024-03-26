@@ -55,6 +55,11 @@ async function getAirplanes(req, res, next) {
     }
 }
 
+/**
+ * GET Request /api/v1/airplanes/:id
+ * Request Body -> {}
+ */
+
 async function getAirplane(req, res, next) {
 
     try {
@@ -72,6 +77,11 @@ async function getAirplane(req, res, next) {
         next(error);
     }
 }
+
+/**
+ * Delete Request /api/v1/airplanes/:id
+ * Request Body -> {}
+ */
 
 async function destroyAirplane(req, res, next) {
 
@@ -92,7 +102,10 @@ async function destroyAirplane(req, res, next) {
     }
 }
 
-
+/**
+ * PUT Request /api/v1/airplanes/:id
+ * Request Body -> {modelNumber:"New value", capacity:"New value"}, we can also leave these fileds
+ */
 async function updateAirplane(req, res, next) {
 
     try {
