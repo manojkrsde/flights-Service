@@ -3,10 +3,11 @@ const { Logger } = require('../config');
 
 const { AirplaneService } = require('../services');
 const successResponse = require('../utils/common/success.response');
+const { query } = require('express');
 
 
 /**
- * POST Request
+ * POST Request /api/v1/airplanes
  * Request Body -> {modelNumber:"airbus a330", capacity:180}
  */
 
@@ -23,7 +24,7 @@ async function createAirplane(req, res, next) {
         successResponse.statusCode = StatusCodes.CREATED;
 
         return res
-            .status(StatusCodes.CREATED)
+            .status(successResponse.statusCode)
             .json(successResponse);
     }
     catch (error) {
@@ -31,4 +32,68 @@ async function createAirplane(req, res, next) {
     }
 }
 
-module.exports = createAirplane;
+/**
+ * GET Request /api/v1/airplanes
+ * Request Body -> {}
+ */
+
+async function getAirplanes(req, res, next) {
+
+    try {
+        const airplanes = await AirplaneService.getAirplanes();
+
+        successResponse.data = airplanes;
+        successResponse.message = "Successfully fetched Airplanes";
+        successResponse.statusCode = StatusCodes.OK;
+
+        return res
+            .status(successResponse.statusCode)
+            .json(successResponse);
+    }
+    catch (error) {
+        next(error);
+    }
+}
+
+async function getAirplane(req, res, next) {
+
+    try {
+        const airplane = await AirplaneService.getAirplane(req.params.id);
+
+        successResponse.data = airplane;
+        successResponse.message = "Successfully fetched Airplane";
+        successResponse.statusCode = StatusCodes.OK;
+
+        return res
+            .status(successResponse.statusCode)
+            .json(successResponse);
+    }
+    catch (error) {
+        next(error);
+    }
+}
+
+async function destroyAirplane(req, res, next) {
+
+    try {
+        const airplane = await AirplaneService.destroyAirplane(req.params.id);
+
+        successResponse.data = airplane;
+        successResponse.message = "Successfully deleted Airplane";
+        successResponse.statusCode = StatusCodes.OK;
+
+        return res
+            .status(successResponse.statusCode)
+            .json(successResponse);
+    }
+    catch (error) {
+        next(error);
+    }
+}
+
+module.exports = {
+    createAirplane,
+    getAirplanes,
+    getAirplane,
+    destroyAirplane
+};

@@ -34,6 +34,56 @@ async function createAirplane(data) {
     }
 }
 
+
+async function getAirplanes() {
+
+    try {
+
+        const airplanes = await airplaneRepository.getAll();
+        return airplanes;
+
+    } catch (error) {
+        throw new InternalServerError("Cannot get the airplanes");
+    }
+}
+
+async function getAirplane(id) {
+
+    try {
+
+        const airplane = await airplaneRepository.get(id);
+        return airplane;
+
+    } catch (error) {
+
+        if (error.statusCode == StatusCodes.NOT_FOUND) {
+            throw new AppError(error.statusCode, "Cannot fetched the airplane", ["Resource requested is not present"]);
+        }
+
+        throw new InternalServerError("Cannot get the airplanes");
+    }
+}
+
+async function destroyAirplane(id) {
+
+    try {
+
+        const airplane = await airplaneRepository.destroy(id);
+        return airplane;
+
+    } catch (error) {
+
+        if (error.statusCode == StatusCodes.NOT_FOUND) {
+            throw new AppError(error.statusCode, "Cannot delete the airplane", ["Resource requested to delete is not present"]);
+        }
+
+        throw new InternalServerError("Cannot delete the airplane");
+    }
+}
+
 module.exports = {
-    createAirplane
+    createAirplane,
+    getAirplanes,
+    getAirplane,
+    destroyAirplane
 };
