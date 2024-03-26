@@ -23,6 +23,7 @@ async function createAirplane(data) {
                 explanation.push(err.message);
             });
 
+
             Logger.error({ message: "Something went wrong doing validation", error: error });
 
             throw new AppError(StatusCodes.BAD_REQUEST, "Something went wrong doing validation", explanation);
@@ -60,7 +61,7 @@ async function getAirplane(id) {
             throw new AppError(error.statusCode, "Cannot fetched the airplane", ["Resource requested is not present"]);
         }
 
-        throw new InternalServerError("Cannot get the airplanes");
+        throw new InternalServerError("Cannot get the airplane");
     }
 }
 

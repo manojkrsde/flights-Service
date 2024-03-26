@@ -3,7 +3,6 @@ const { Logger } = require('../config');
 
 const { AirplaneService } = require('../services');
 const successResponse = require('../utils/common/success.response');
-const { query } = require('express');
 
 
 /**

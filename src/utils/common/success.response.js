@@ -1,6 +1,6 @@
 const { StatusCodes } = require('http-status-codes');
 
-const success = {
+const successResponse = {
     success: true,
     statusCode: StatusCodes.OK,//default
     message: "",
@@ -8,4 +8,4 @@ const success = {
     error: {}
 };
 
-module.exports = success;
+module.exports = successResponse;
