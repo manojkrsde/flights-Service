@@ -23,7 +23,7 @@ const resetIdentity = async () => {
             const response = await sequelize.query(query);
 
         } catch (error) {
-            console.error('Error resetting identity seed:', error);
+            console.error('Error resetting identity seed: check logs to see error');
             Logger.error({ message: "Error resetting identity seed:", error: error });
             return;
         }
