@@ -31,12 +31,14 @@ app.listen(ServerConfig.PORT, () => {
      */
     sequelize.authenticate()
         .then(() => {
-            resetIdentity();
+            return resetIdentity();
+        })
+        .then(() => {
+            console.log("Succes: Identity seed reset successfull");
         })
         .catch(error => {
+            console.log('Identity seed reset -- failed -- for all models');
             console.error('Database is not connected:', error);
             Logger.error({ message: "Database is not Connected!!!", error: error });
         });
-
-    resetIdentity();
 });

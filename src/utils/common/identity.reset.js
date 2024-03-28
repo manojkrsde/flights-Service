@@ -21,13 +21,12 @@ const resetIdentity = async () => {
 
         try {
             const response = await sequelize.query(query);
-            console.log('Identity seed reset successfully for all models');
 
         } catch (error) {
             console.error('Error resetting identity seed:', error);
             Logger.error({ message: "Error resetting identity seed:", error: error });
+            return;
         }
-
     });
 
 };
