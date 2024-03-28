@@ -2,6 +2,7 @@
 const { StatusCodes } = require('http-status-codes');
 const { Logger } = require('../config');
 const { AppError } = require('../errors');
+const resetIdentity = require('../utils/common/identity.reset');
 
 class CrudRepository {
 

@@ -1,9 +1,10 @@
 const express = require("express");
-
 const { ServerConfig, Logger } = require("./config");
+const { sequelize } = require('./models');
 
 const apiRouter = require("./routes");
 const errorHandler = require('./utils/errorHandler');
+const resetIdentity = require("./utils/common/identity.reset");
 
 const app = express();
 
@@ -24,4 +25,18 @@ app.use(errorHandler);
 
 app.listen(ServerConfig.PORT, () => {
     console.log(`Started server at PORT: ${ServerConfig.PORT}`);
+
+    /**
+     * Resetting Identity column
+     */
+    sequelize.authenticate()
+        .then(() => {
+            resetIdentity();
+        })
+        .catch(error => {
+            console.error('Database is not connected:', error);
+            Logger.error({ message: "Database is not Connected!!!", error: error });
+        });
+
+    resetIdentity();
 });
