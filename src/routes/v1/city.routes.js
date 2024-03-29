@@ -1,12 +1,12 @@
 const express = require('express');
-const { CityController } = require('../../controllers');
+const { CityController, pingCheck } = require('../../controllers');
 const { CityMiddlewares } = require('../../middlewares');
 
 const cityRouter = express.Router();
 
 
 
-cityRouter.get('/ping', CityController.pingCheck);
+cityRouter.get('/ping', pingCheck);
 
 /**
  * POST request

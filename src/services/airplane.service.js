@@ -39,11 +39,12 @@ async function createAirplane(data) {
 async function getAirplanes() {
 
     try {
-
         const airplanes = await airplaneRepository.getAll();
         return airplanes;
 
     } catch (error) {
+
+        Logger.error({ message: "Something went wrong fetching airplanes", error: error });
         throw new InternalServerError("Cannot get the airplanes");
     }
 }
@@ -57,7 +58,9 @@ async function getAirplane(id) {
 
     } catch (error) {
 
+        Logger.error({ message: "Something went wrong fetching airplane", error: error });
         if (error.statusCode == StatusCodes.NOT_FOUND) {
+
             throw new AppError(error.statusCode, "Cannot fetched the airplane", ["Resource requested is not present"]);
         }
 
@@ -73,6 +76,7 @@ async function destroyAirplane(id) {
         return airplane;
 
     } catch (error) {
+        Logger.error({ message: "Something went wrong deleting airplane", error: error });
 
         if (error.statusCode == StatusCodes.NOT_FOUND) {
             throw new AppError(error.statusCode, "Cannot delete the airplane", ["Resource requested to delete is not present"]);
@@ -90,6 +94,8 @@ async function updateAirplane(key, data) {
         return airplane;
 
     } catch (error) {
+
+        Logger.error({ message: "Something went wrong updating airplane", error: error });
 
         if (error.statusCode == StatusCodes.NOT_FOUND) {
             throw new AppError(error.statusCode, "Cannot update the airplane", ["Resource requested to update is not present"]);

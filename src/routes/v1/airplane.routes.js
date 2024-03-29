@@ -1,8 +1,13 @@
 const express = require('express');
-const { AirplaneController } = require('../../controllers/');
+const { AirplaneController, pingCheck } = require('../../controllers/');
 const { AirplaneMiddlewares } = require('../../middlewares');
 
 const airplaneRouter = express.Router();
+
+/**
+ * /api/v1/airplanes/ping
+ */
+airplaneRouter.get('/ping', pingCheck);
 
 /**
  * /api/v1/airplanes : POST
