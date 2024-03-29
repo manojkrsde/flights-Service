@@ -1,5 +1,6 @@
 const express = require('express');
 const { AirportController, pingCheck } = require('../../controllers');
+const { AirportMiddlewares } = require('../../middlewares');
 
 const airportRouter = express.Router();
 
@@ -15,6 +16,7 @@ airportRouter.get('/ping', pingCheck);
  * /api/v1/airplanes : POST
  */
 airportRouter.post('/',
+    AirportMiddlewares.validateCreateRequest,
     AirportController.createAirport
 );
 
