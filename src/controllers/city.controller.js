@@ -3,20 +3,6 @@ const { StatusCodes } = require("http-status-codes");
 const { CityService } = require("../services");
 const successResponse = require("../utils/common/success.response");
 
-
-
-async function pingCheck(req, res, next) {
-
-    successResponse.message = "Ping Check Successfull";
-    successResponse.data = {};
-    successResponse.error = {};
-
-    return res
-        .status(successResponse.statusCode)
-        .json(successResponse);
-
-}
-
 async function createCity(req, res, next) {
 
     try {
@@ -75,10 +61,10 @@ async function getCity(req, res, next) {
 async function destroyCity(req, res, next) {
 
     try {
-        successResponse.data = await CityService.getCity(req.params.id);
 
         const city = await CityService.destroyCity(req.params.id);
 
+        successResponse.data = city;
         successResponse.message = "Successfully deleted city";
         successResponse.statusCode = StatusCodes.OK;
 
@@ -118,7 +104,6 @@ async function updateCity(req, res, next) {
 
 
 module.exports = {
-    pingCheck,
     createCity,
     getCities,
     getCity,

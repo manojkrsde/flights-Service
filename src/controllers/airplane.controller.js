@@ -85,10 +85,10 @@ async function getAirplane(req, res, next) {
 async function destroyAirplane(req, res, next) {
 
     try {
-        successResponse.data = await AirplaneService.getAirplane(req.params.id);
 
         const airplane = await AirplaneService.destroyAirplane(req.params.id);
 
+        successResponse.data = airplane;
         successResponse.message = "Successfully deleted Airplane";
         successResponse.statusCode = StatusCodes.OK;
 
