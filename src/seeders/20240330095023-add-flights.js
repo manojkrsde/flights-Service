@@ -23,7 +23,7 @@ module.exports = {
         arrivalAirportId: 3, // Sample airport ID from the airport table
         arrivalTime: "2024-04-01T12:00:00Z",
         departureTime: "2024-04-01T08:00:00Z",
-        price: 250.99, // Sample trip price
+        price: 5000, // Sample trip price
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -34,7 +34,7 @@ module.exports = {
         arrivalAirportId: 2, // Sample airport ID from the airport table
         arrivalTime: "2024-04-02T14:30:00Z",
         departureTime: "2024-04-02T10:30:00Z",
-        price: 199.99, // Sample trip price
+        price: 3980, // Sample trip price
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -45,7 +45,7 @@ module.exports = {
         arrivalAirportId: 4, // Sample airport ID from the airport table
         arrivalTime: "2024-04-03T18:45:00Z",
         departureTime: "2024-04-03T14:45:00Z",
-        price: 299.99, // Sample trip price
+        price: 5980, // Sample trip price
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -56,7 +56,7 @@ module.exports = {
         arrivalAirportId: 5, // Sample airport ID from the airport table
         arrivalTime: "2024-04-04T22:00:00Z",
         departureTime: "2024-04-04T18:00:00Z",
-        price: 149.99, // Sample trip price
+        price: 2980, // Sample trip price
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -67,7 +67,7 @@ module.exports = {
         arrivalAirportId: 6, // Sample airport ID from the airport table
         arrivalTime: "2024-04-05T10:30:00Z",
         departureTime: "2024-04-05T06:30:00Z",
-        price: 189.99, // Sample trip price
+        price: 3780, // Sample trip price
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -78,7 +78,7 @@ module.exports = {
         arrivalAirportId: 7, // Sample airport ID from the airport table
         arrivalTime: "2024-04-06T15:45:00Z",
         departureTime: "2024-04-06T11:45:00Z",
-        price: 219.99, // Sample trip price
+        price: 4380, // Sample trip price
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -89,7 +89,7 @@ module.exports = {
         arrivalAirportId: 8, // Sample airport ID from the airport table
         arrivalTime: "2024-04-07T20:00:00Z",
         departureTime: "2024-04-07T16:00:00Z",
-        price: 179.99, // Sample trip price
+        price: 3580, // Sample trip price
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -100,7 +100,7 @@ module.exports = {
         arrivalAirportId: 9, // Sample airport ID from the airport table
         arrivalTime: "2024-04-08T08:30:00Z",
         departureTime: "2024-04-08T04:30:00Z",
-        price: 269.99, // Sample trip price
+        price: 5380, // Sample trip price
         createdAt: new Date(),
         updatedAt: new Date()
       }

@@ -1,5 +1,6 @@
 const { StatusCodes } = require('http-status-codes');
 const { AppError } = require("../errors");
+const { compareTime } = require('../utils/helpers/compareDateTime');
 
 function validateCreateRequest(req, res, next) {
     const data = req.body;
@@ -7,7 +8,7 @@ function validateCreateRequest(req, res, next) {
     if (
         !data.flightNumber || !data.airplaneId || !data.departureAirportId ||
         !data.arrivalAirportId || !data.arrivalTime || !data.departureTime ||
-        !data.price || !data.totalSeats
+        !data.price
     ) {
         let details = new Array();
 
@@ -25,13 +26,16 @@ function validateCreateRequest(req, res, next) {
 
         if (!data.price) details.push("price is not found in incomming request in correct form");
 
-        if (!data.totalSeats) details.push("totalSeats is not found in incomming request in correct form");
-
         throw new AppError(StatusCodes.BAD_REQUEST, "Please enter valid details", details);
+    }
+
+    if (compareTime(data.departureTime, data.arrivalTime)) {
+        throw new AppError(StatusCodes.BAD_REQUEST, 'Please Enter Valid details', ['Departure Time can not be greater than arrival Time']);
     }
 
     next();
 }
+
 
 module.exports = {
     validateCreateRequest

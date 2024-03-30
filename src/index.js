@@ -4,7 +4,7 @@ const { sequelize } = require('./models');
 
 const apiRouter = require("./routes");
 const errorHandler = require('./utils/errorHandler');
-const resetIdentity = require("./utils/common/identity.reset");
+const resetIdentity = require("./utils/helpers/identity.reset");
 
 const app = express();
 

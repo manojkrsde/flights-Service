@@ -7,17 +7,27 @@ const flightRoutes = express.Router();
 
 
 /**
- * /api/v1/airplanes/ping
+ * /api/v1/flights/ping
  */
 flightRoutes.get('/ping', pingCheck);
 
 /**
- * /api/v1/airplanes : POST
+ * POST Request
+ * /api/v1/flights/ 
  */
 flightRoutes.post('/',
     FlightMiddlewares.validateCreateRequest,
     FlightController.createFlight
 );
 
+
+
+/**
+ * GET Request
+ * /api/v1/flights/? --query params possible
+ */
+flightRoutes.get('/',
+    FlightController.getAllFlights
+);
 
 module.exports = flightRoutes;

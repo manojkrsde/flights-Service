@@ -1,11 +1,17 @@
 const CurdRepository = require('./crud.repository');
-const { Flight } = require('../models');
+const { Flight, sequelize } = require('../models');
+
 
 
 class FlightRepository extends CurdRepository {
 
     constructor() {
         super(Flight);
+    }
+
+    async getAllFlights(customQuery) {
+        const response = await sequelize.query(customQuery);
+        return response[0];
     }
 
 }

@@ -6,8 +6,10 @@ const successResponse = require('../utils/common/success.response');
 
 
 /**
- * POST Request /api/v1/airplanes
- * Request Body -> {modelNumber:"airbus a330", capacity:180}
+ * POST Request /api/v1/flights
+ * Request Body -> {
+ * 
+ * }
  */
 async function createFlight(req, res, next) {
 
@@ -20,8 +22,7 @@ async function createFlight(req, res, next) {
             arrivalTime: req.body.arrivalTime,
             departureTime: req.body.departureTime,
             price: req.body.price,
-            boardingGate: req.body.boardingGate,
-            totalSeats: req.body.totalSeats
+            boardingGate: req.body.boardingGate
         });
 
         successResponse.data = flight;
@@ -38,6 +39,31 @@ async function createFlight(req, res, next) {
 
 }
 
+
+
+/**
+ * Get Request : /api/v1/flights/?
+ * Request Body -> {}
+ */
+
+async function getAllFlights(req, res, next) {
+    try {
+        const response = await FlightService.getAllFlights(req.query);
+
+        successResponse.data = response;
+        successResponse.statusCode = StatusCodes.OK;
+        successResponse.message = "Flights fetched successfully";
+
+        return res
+            .status(successResponse.statusCode)
+            .json(successResponse);
+
+    } catch (error) {
+        next(error);
+    }
+}
+
 module.exports = {
-    createFlight
+    createFlight,
+    getAllFlights
 }
