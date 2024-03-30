@@ -3,9 +3,13 @@ const { AppError } = require("../errors");
 
 function validateCreateRequest(req, res, next) {
 
-    if (!req.body.modelNumber || !req.body.capacity) {
+    if (!req.body.name || !req.body.modelNumber || !req.body.capacity) {
 
         let details = new Array();
+
+        if (!req.body.name) {
+            details.push("Name is not found in incomming request in correct form")
+        }
 
         if (!req.body.modelNumber) {
             details.push("Model Number is not found in incomming request in correct form")
