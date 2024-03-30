@@ -4,8 +4,14 @@ const { pingCheck } = require('../../controllers/');
 const airplaneRouter = require('./airplane.routes');
 const cityRouter = require('./city.routes');
 const airportRouter = require('./airport.routes');
+const flightRoutes = require('./flight.routes');
 
 const router = express.Router();
+
+/**
+ * api/v1/airports
+ */
+router.use('/flights', flightRoutes);
 
 /**
  * api/v1/airports
