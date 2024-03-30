@@ -17,36 +17,59 @@ module.exports = {
 
     await queryInterface.bulkInsert('Cities', [
       {
-        name: 'Delhi',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        "name": "Delhi",
+        "updatedAt": new Date(),
+        "createdAt": new Date()
       },
       {
-        name: 'Mumbai',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        "name": "Mumbai",
+        "updatedAt": new Date(),
+        "createdAt": new Date()
       },
       {
-        name: 'Bengaluru',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        "name": "Bengaluru",
+        "updatedAt": new Date(),
+        "createdAt": new Date()
       },
       {
-        name: 'Chennai',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        "name": "Lucknow",
+        "updatedAt": new Date(),
+        "createdAt": new Date()
       },
       {
-        name: 'Lucknow',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        "name": "Chennai",
+        "updatedAt": new Date(),
+        "createdAt": new Date()
+      },
+
+      {
+        "name": "Hyderabad",
+        "updatedAt": new Date(),
+        "createdAt": new Date()
       },
       {
-        name: 'Hyderabad',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        "name": "Kolkata",
+        "updatedAt": new Date(),
+        "createdAt": new Date()
+      },
+      {
+        "name": "Ahmedabad",
+        "updatedAt": new Date(),
+        "createdAt": new Date()
+      },
+      {
+        "name": "Pune",
+        "updatedAt": new Date(),
+        "createdAt": new Date()
+      },
+      {
+        "name": "Jaipur",
+        "updatedAt": new Date(),
+        "createdAt": new Date()
       }
-    ], {});
+
+    ]
+      , {});
   },
 
   async down(queryInterface, Sequelize) {
@@ -63,9 +86,12 @@ module.exports = {
         { name: 'Bengaluru' },
         { name: 'Lucknow' },
         { name: 'Chennai' },
-        { name: 'Hyderabad' }
+        { name: 'Hyderabad' },
+        { name: 'Kolkata' },
+        { name: 'Ahmedabad' },
+        { name: 'Pune' },
+        { name: 'Jaipur' }
       ]
     });
-
   }
 };

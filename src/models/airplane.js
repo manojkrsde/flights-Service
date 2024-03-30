@@ -18,12 +18,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Airplane.init({
+    name: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
     modelNumber: {
       type: DataTypes.STRING(100),
-      allowNull: false,
-      validate: {
-        isAlphanumeric: true,
-      }
+      allowNull: false
     },
     capacity: {
       type: DataTypes.INTEGER,
