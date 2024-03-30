@@ -2,7 +2,10 @@
 const flightsFliter = (query) => {
 
     let customFilter =
-        `SELECT  A.code as departureAirportCode, B.code as arrivalAirportCode, F.* 
+        `SELECT
+        A.code as departureAirportCode,
+        B.code as arrivalAirportCode,
+        F.*
         FROM Flights as F
         JOIN Airports as A
         ON F.departureAirportId=A.id
@@ -52,6 +55,21 @@ const flightsFliter = (query) => {
 
     if (query.travellers) {
         customFilter += ` AND C.capacity >= ${query.travellers}`
+    }
+
+    if (query.sort) {
+        customFilter += 'ORDER BY '
+        let orderEmpty = true;
+        const sortingParams = query.sort.split(',');
+
+        sortingParams.map((elem) => {
+            if (!orderEmpty) customFilter += ',';
+            orderEmpty = false;
+
+            let [colName, method] = elem.split('_');
+            customFilter += ` F.${colName} ${method}`;
+        })
+
     }
 
 
