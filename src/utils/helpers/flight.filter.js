@@ -3,21 +3,28 @@ const { Op } = require('sequelize');
 
 const flightsFilter = (query) => {
 
+
+
     let filterOptions = {
+
+        attributes: ['id', 'flightNumber', 'arrivalTime', 'departureTime', 'price', 'boardingGate'],
+
         include: [
             {
                 model: Airplane,
+                as: "AirplaneDetails",
                 attributes: ['name', 'modelNumber', 'capacity'],
                 required: true
             },
             {
                 model: Airport,
-                as: 'departureAirport',
+                as: 'DepartureAirport',
                 attributes: ['code'],
                 required: true,
                 include: [
                     {
                         model: City,
+                        as: 'AirportCityDetails',
                         attributes: ['name'],
                         required: true
                     }
@@ -25,13 +32,14 @@ const flightsFilter = (query) => {
             },
             {
                 model: Airport,
-                as: 'arrivalAirport',
+                as: 'ArrivalAirport',
                 attributes: ['code'],
                 required: true,
 
                 include: [
                     {
                         model: City,
+                        as: 'AirportCityDetails',
                         attributes: ['name'],
                         required: true
                     }
@@ -53,9 +61,9 @@ const flightsFilter = (query) => {
             filterOptions.include[1].where = { code: departureAirportCode };
         }
 
-        // if (arrivalAirportCode !== undefined && arrivalAirportCode.length > 0) {
-        //     filterOptions.include[1].where = { code: arrivalAirportCode };
-        // }
+        if (arrivalAirportCode !== undefined && arrivalAirportCode.length > 0) {
+            filterOptions.include[2].where = { code: arrivalAirportCode };
+        }
     }
 
     if (query.price) {
@@ -93,7 +101,7 @@ const flightsFilter = (query) => {
 
 
     if (query.travellers) {
-        filterOptions.where['$airplane.capacity$'] = {
+        filterOptions.where['$AirplaneDetails.capacity$'] = {
             [Op.gte]: query.travellers,
         };
     }
