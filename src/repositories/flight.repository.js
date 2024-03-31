@@ -9,9 +9,9 @@ class FlightRepository extends CurdRepository {
         super(Flight);
     }
 
-    async getAllFlights(customQuery) {
-        const response = await sequelize.query(customQuery);
-        return response[0];
+    async getAllFlights(filter) {
+        const response = await Flight.findAll(filter);
+        return response;
     }
 
 }

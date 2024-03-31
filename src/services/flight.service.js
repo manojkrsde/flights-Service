@@ -3,7 +3,7 @@ const { StatusCodes } = require('http-status-codes');
 const { Logger } = require('../config');
 
 const { FlightRepository } = require('../repositories');
-const { flightsFliter } = require('../utils/helpers/flights.filter');
+const { flightsFilter } = require('../utils/helpers/flight.filter');
 
 const flightRepository = new FlightRepository();
 
@@ -37,9 +37,8 @@ async function createFlight(data) {
 async function getAllFlights(query) {
 
     try {
-        const customQuery = flightsFliter(query);
-        const response = await flightRepository.getAllFlights(customQuery);
-
+        const customFilter = flightsFilter(query);
+        const response = await flightRepository.getAllFlights(customFilter);
         return response;
 
     } catch (error) {

@@ -41,4 +41,5 @@ app.listen(ServerConfig.PORT, () => {
             console.error('Database is not connected:', error);
             Logger.error({ message: "Database is not Connected!!!", error: error });
         });
+
 });

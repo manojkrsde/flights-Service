@@ -19,7 +19,7 @@ module.exports = {
         references: {
           model: 'Airplanes',
           key: 'id',
-          name: 'FK_Flights_'
+          name: 'FK_Flights_airplaneId'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
