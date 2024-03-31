@@ -1,14 +1,43 @@
-
-const { Airport, Airplane } = require('../../models');
+const { City, Airport, Airplane } = require('../../models');
 const { Op } = require('sequelize');
 
 const flightsFilter = (query) => {
 
     let filterOptions = {
         include: [
-            { model: Airplane, attributes: ['name', 'modelNumber', 'capacity'], required: true },
-            { model: Airport, as: 'departureAirport', attributes: ['code'], required: true },
-            { model: Airport, as: 'arrivalAirport', attributes: ['code'], required: true }
+            {
+                model: Airplane,
+                attributes: ['name', 'modelNumber', 'capacity'],
+                required: true
+            },
+            {
+                model: Airport,
+                as: 'departureAirport',
+                attributes: ['code'],
+                required: true,
+                include: [
+                    {
+                        model: City,
+                        attributes: ['name'],
+                        required: true
+                    }
+                ]
+            },
+            {
+                model: Airport,
+                as: 'arrivalAirport',
+                attributes: ['code'],
+                required: true,
+
+                include: [
+                    {
+                        model: City,
+                        attributes: ['name'],
+                        required: true
+                    }
+                ]
+            }
+
         ],
         where: {}
     };
@@ -24,9 +53,9 @@ const flightsFilter = (query) => {
             filterOptions.include[1].where = { code: departureAirportCode };
         }
 
-        if (arrivalAirportCode !== undefined && arrivalAirportCode.length > 0) {
-            filterOptions.include[2].where = { code: arrivalAirportCode };
-        }
+        // if (arrivalAirportCode !== undefined && arrivalAirportCode.length > 0) {
+        //     filterOptions.include[1].where = { code: arrivalAirportCode };
+        // }
     }
 
     if (query.price) {
