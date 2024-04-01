@@ -1,7 +1,7 @@
 const { City, Airport, Airplane } = require('../../models');
 const { Op } = require('sequelize');
 
-const flightsFilter = (query) => {
+const generateCustomFilter = (query) => {
 
 
 
@@ -125,5 +125,5 @@ const flightsFilter = (query) => {
 };
 
 module.exports = {
-    flightsFilter
+    generateCustomFilter
 };

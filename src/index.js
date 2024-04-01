@@ -3,8 +3,8 @@ const { ServerConfig, Logger } = require("./config");
 const { sequelize } = require('./models');
 
 const apiRouter = require("./routes");
-const errorHandler = require('./utils/errorHandler');
-const resetIdentity = require("./utils/helpers/identity.reset");
+const { errorHandler } = require('./utils');
+const { IdentityReset } = require("./utils/helpers/");
 
 const app = express();
 
@@ -31,7 +31,7 @@ app.listen(ServerConfig.PORT, () => {
      */
     sequelize.authenticate()
         .then(() => {
-            return resetIdentity();
+            return IdentityReset();
         })
         .then(() => {
             console.log("Succes: Identity seed reset successfull");

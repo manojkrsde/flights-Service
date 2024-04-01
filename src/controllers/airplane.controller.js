@@ -1,6 +1,6 @@
 const { StatusCodes } = require('http-status-codes');
 const { AirplaneService } = require('../services');
-const successResponse = require('../utils/common/success.response');
+const { SuccessResponse } = require('../utils/common/');
 
 
 /**
@@ -16,13 +16,13 @@ async function createAirplane(req, res, next) {
             capacity: req.body.capacity
         });
 
-        successResponse.data = airplane;
-        successResponse.message = "Successfully created Airplane object";
-        successResponse.statusCode = StatusCodes.CREATED;
+        SuccessResponse.data = airplane;
+        SuccessResponse.message = "Successfully created Airplane object";
+        SuccessResponse.statusCode = StatusCodes.CREATED;
 
         return res
-            .status(successResponse.statusCode)
-            .json(successResponse);
+            .status(SuccessResponse.statusCode)
+            .json(SuccessResponse);
     }
     catch (error) {
         next(error);
@@ -39,13 +39,13 @@ async function getAirplanes(req, res, next) {
     try {
         const airplanes = await AirplaneService.getAirplanes();
 
-        successResponse.data = airplanes;
-        successResponse.message = "Successfully fetched Airplanes";
-        successResponse.statusCode = StatusCodes.OK;
+        SuccessResponse.data = airplanes;
+        SuccessResponse.message = "Successfully fetched Airplanes";
+        SuccessResponse.statusCode = StatusCodes.OK;
 
         return res
-            .status(successResponse.statusCode)
-            .json(successResponse);
+            .status(SuccessResponse.statusCode)
+            .json(SuccessResponse);
     }
     catch (error) {
         next(error);
@@ -62,13 +62,13 @@ async function getAirplane(req, res, next) {
     try {
         const airplane = await AirplaneService.getAirplane(req.params.id);
 
-        successResponse.data = airplane;
-        successResponse.message = "Successfully fetched Airplane";
-        successResponse.statusCode = StatusCodes.OK;
+        SuccessResponse.data = airplane;
+        SuccessResponse.message = "Successfully fetched Airplane";
+        SuccessResponse.statusCode = StatusCodes.OK;
 
         return res
-            .status(successResponse.statusCode)
-            .json(successResponse);
+            .status(SuccessResponse.statusCode)
+            .json(SuccessResponse);
     }
     catch (error) {
         next(error);
@@ -86,13 +86,13 @@ async function destroyAirplane(req, res, next) {
 
         const airplane = await AirplaneService.destroyAirplane(req.params.id);
 
-        successResponse.data = airplane;
-        successResponse.message = "Successfully deleted Airplane";
-        successResponse.statusCode = StatusCodes.OK;
+        SuccessResponse.data = airplane;
+        SuccessResponse.message = "Successfully deleted Airplane";
+        SuccessResponse.statusCode = StatusCodes.OK;
 
         return res
-            .status(successResponse.statusCode)
-            .json(successResponse);
+            .status(SuccessResponse.statusCode)
+            .json(SuccessResponse);
     }
     catch (error) {
         next(error);
@@ -111,13 +111,13 @@ async function updateAirplane(req, res, next) {
             capacity: req.body.capacity
         });
 
-        successResponse.data = await AirplaneService.getAirplane(req.params.id);
-        successResponse.message = "Successfully updated Airplane object";
-        successResponse.statusCode = StatusCodes.OK;
+        SuccessResponse.data = await AirplaneService.getAirplane(req.params.id);
+        SuccessResponse.message = "Successfully updated Airplane object";
+        SuccessResponse.statusCode = StatusCodes.OK;
 
         return res
-            .status(successResponse.statusCode)
-            .json(successResponse);
+            .status(SuccessResponse.statusCode)
+            .json(SuccessResponse);
     }
     catch (error) {
         next(error);

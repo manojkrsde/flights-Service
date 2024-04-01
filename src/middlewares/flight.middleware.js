@@ -1,6 +1,6 @@
 const { StatusCodes } = require('http-status-codes');
 const { AppError } = require("../errors");
-const { compareTime } = require('../utils/helpers/compareDateTime');
+const { CompareDates } = require('../utils/helpers');
 
 function validateCreateRequest(req, res, next) {
     const data = req.body;
@@ -29,7 +29,7 @@ function validateCreateRequest(req, res, next) {
         throw new AppError(StatusCodes.BAD_REQUEST, "Please enter valid details", details);
     }
 
-    if (compareTime(data.departureTime, data.arrivalTime)) {
+    if (CompareDates.compareTime(data.departureTime, data.arrivalTime)) {
         throw new AppError(StatusCodes.BAD_REQUEST, 'Please Enter Valid details', ['Departure Time can not be greater than arrival Time']);
     }
 

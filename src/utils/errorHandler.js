@@ -2,25 +2,25 @@
 const BaseError = require("../errors/base.error");
 const { StatusCodes } = require('http-status-codes');
 
-const errorResponse = require('./common/error.response');
+const { ErrorResponse } = require('./common');
 
 function errorHandler(err, req, res, next) {
 
     if (err instanceof BaseError) {
 
-        errorResponse.statusCode = err.statusCode;
-        errorResponse.message = err.message;
-        errorResponse.error.explanation = err.details;
+        ErrorResponse.statusCode = err.statusCode;
+        ErrorResponse.message = err.message;
+        ErrorResponse.error.explanation = err.details;
 
         return res
             .status(err.statusCode)
-            .json(errorResponse);
+            .json(ErrorResponse);
     }
 
-    errorResponse.error = err;
+    ErrorResponse.error = err;
     return res
         .status(StatusCodes.INTERNAL_SERVER_ERROR)
-        .json(errorResponse);
+        .json(ErrorResponse);
 }
 
 module.exports = errorHandler;

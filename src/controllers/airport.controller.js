@@ -1,7 +1,7 @@
 
 const { StatusCodes } = require("http-status-codes");
 const { AirportService } = require("../services");
-const successResponse = require("../utils/common/success.response");
+const { SuccessResponse } = require('../utils/common/');
 
 /**
  * POST Request : /api/v1/airports
@@ -18,13 +18,13 @@ async function createAirport(req, res, next) {
             address: req.body.address
         });
 
-        successResponse.data = response;
-        successResponse.statusCode = StatusCodes.CREATED;
-        successResponse.message = "Created Airport successfully";
+        SuccessResponse.data = response;
+        SuccessResponse.statusCode = StatusCodes.CREATED;
+        SuccessResponse.message = "Created Airport successfully";
 
         return res
-            .status(successResponse.statusCode)
-            .json(successResponse);
+            .status(SuccessResponse.statusCode)
+            .json(SuccessResponse);
 
     } catch (error) {
         next(error);
@@ -41,13 +41,13 @@ async function getAirports(req, res, next) {
     try {
         const response = await AirportService.getAirports();
 
-        successResponse.data = response;
-        successResponse.statusCode = StatusCodes.OK;
-        successResponse.message = "Airports fetched successfully";
+        SuccessResponse.data = response;
+        SuccessResponse.statusCode = StatusCodes.OK;
+        SuccessResponse.message = "Airports fetched successfully";
 
         return res
-            .status(successResponse.statusCode)
-            .json(successResponse);
+            .status(SuccessResponse.statusCode)
+            .json(SuccessResponse);
 
     } catch (error) {
         next(error);
@@ -64,13 +64,13 @@ async function getAirport(req, res, next) {
     try {
         const response = await AirportService.getAirport(req.params.id);
 
-        successResponse.data = response;
-        successResponse.statusCode = StatusCodes.OK;
-        successResponse.message = "Airport fetched successfully";
+        SuccessResponse.data = response;
+        SuccessResponse.statusCode = StatusCodes.OK;
+        SuccessResponse.message = "Airport fetched successfully";
 
         return res
-            .status(successResponse.statusCode)
-            .json(successResponse);
+            .status(SuccessResponse.statusCode)
+            .json(SuccessResponse);
 
     } catch (error) {
         next(error);
@@ -87,13 +87,13 @@ async function destroyAirport(req, res, next) {
 
         const airport = await AirportService.destroyAirport(req.params.id);
 
-        successResponse.data = airport;
-        successResponse.message = "Successfully deleted Airport";
-        successResponse.statusCode = StatusCodes.OK;
+        SuccessResponse.data = airport;
+        SuccessResponse.message = "Successfully deleted Airport";
+        SuccessResponse.statusCode = StatusCodes.OK;
 
         return res
-            .status(successResponse.statusCode)
-            .json(successResponse);
+            .status(SuccessResponse.statusCode)
+            .json(SuccessResponse);
     }
     catch (error) {
         next(error);
@@ -114,13 +114,13 @@ async function updateAirport(req, res, next) {
             address: req.body.address
         });
 
-        successResponse.data = await AirportService.getAirport(req.params.id);
-        successResponse.message = "Successfully updated the Airport";
-        successResponse.statusCode = StatusCodes.OK;
+        SuccessResponse.data = await AirportService.getAirport(req.params.id);
+        SuccessResponse.message = "Successfully updated the Airport";
+        SuccessResponse.statusCode = StatusCodes.OK;
 
         return res
-            .status(successResponse.statusCode)
-            .json(successResponse);
+            .status(SuccessResponse.statusCode)
+            .json(SuccessResponse);
     }
     catch (error) {
         next(error);
