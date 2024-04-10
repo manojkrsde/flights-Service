@@ -1,4 +1,7 @@
 'use strict';
+
+
+
 const {
   Model
 } = require('sequelize');
@@ -31,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
         onUpdate: 'CASCADE'
       });
     }
+
   }
   Flight.init({
     flightNumber: {
@@ -66,8 +70,20 @@ module.exports = (sequelize, DataTypes) => {
     },
     totalSeats: DataTypes.INTEGER
   }, {
+    hooks: {
+      afterCreate: async (flight, options) => {
+        //trigger 
+        const { AirplaneService } = require('../services');
+
+        const airplane = await AirplaneService.getAirplane(flight.airplaneId);
+
+        flight.totalSeats = airplane.dataValues.capacity;
+
+      }
+    },
     sequelize,
     modelName: 'Flight',
   });
+
   return Flight;
 };
