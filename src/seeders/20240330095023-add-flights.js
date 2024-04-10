@@ -25,7 +25,8 @@ module.exports = {
         departureTime: "2024-04-01T08:00:00Z",
         price: 5000, // Sample trip price
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        totalSeats: 467
       },
       {
         flightNumber: "UK-07-531",
@@ -36,7 +37,8 @@ module.exports = {
         departureTime: "2024-04-02T10:30:00Z",
         price: 3980, // Sample trip price
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        totalSeats: 555
       },
       {
         flightNumber: "UK-07-532",
@@ -47,7 +49,8 @@ module.exports = {
         departureTime: "2024-04-03T14:45:00Z",
         price: 5980, // Sample trip price
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        totalSeats: 396
       },
       {
         flightNumber: "UK-07-533",
@@ -58,7 +61,8 @@ module.exports = {
         departureTime: "2024-04-04T18:00:00Z",
         price: 2980, // Sample trip price
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        totalSeats: 325
       },
       {
         flightNumber: "UK-07-534",
@@ -69,7 +73,8 @@ module.exports = {
         departureTime: "2024-04-05T06:30:00Z",
         price: 3780, // Sample trip price
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        totalSeats: 189
       },
       {
         flightNumber: "UK-07-535",
@@ -80,7 +85,8 @@ module.exports = {
         departureTime: "2024-04-06T11:45:00Z",
         price: 4380, // Sample trip price
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        totalSeats: 186
       },
       {
         flightNumber: "UK-07-536",
@@ -91,7 +97,8 @@ module.exports = {
         departureTime: "2024-04-07T16:00:00Z",
         price: 3580, // Sample trip price
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        totalSeats: 296
       },
       {
         flightNumber: "UK-07-537",
@@ -102,7 +109,8 @@ module.exports = {
         departureTime: "2024-04-08T04:30:00Z",
         price: 5380, // Sample trip price
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        totalSeats: 114
       }
     ], {});
 

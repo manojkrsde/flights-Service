@@ -71,7 +71,7 @@ module.exports = (sequelize, DataTypes) => {
     totalSeats: DataTypes.INTEGER
   }, {
     hooks: {
-      afterCreate: async (flight, options) => {
+      beforeCreate: async (flight, options) => {
         //trigger 
         const { AirplaneService } = require('../services');
 
