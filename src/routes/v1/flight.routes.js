@@ -40,4 +40,14 @@ flightRoutes.get('/:id',
 );
 
 
+/**
+ * Patch Request
+ * /api/v1/flights/:id/seats
+ */
+flightRoutes.patch('/:id/seats',
+    FlightMiddlewares.validateUpdateRequest,
+    FlightController.updateSeats
+);
+
+
 module.exports = flightRoutes;

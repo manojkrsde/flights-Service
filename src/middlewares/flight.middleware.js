@@ -36,7 +36,20 @@ function validateCreateRequest(req, res, next) {
     next();
 }
 
+function validateUpdateRequest(req, res, next) {
+    const data = req.body;
 
+    if (!data.seats) {
+        let details = new Array();
+
+        details.push("No of seats is not found in incomming request in correct form");
+
+        throw new AppError(StatusCodes.BAD_REQUEST, "Please enter valid details", details);
+    }
+
+    next();
+}
 module.exports = {
-    validateCreateRequest
+    validateCreateRequest,
+    validateUpdateRequest
 };

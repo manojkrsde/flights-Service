@@ -69,8 +69,8 @@ async function getAllFlights(query) {
 async function getFlight(id) {
 
     try {
-        const customFilter = FlightFilter.generateCustomFilter();
-        const response = await flightRepository.getFlight(id, customFilter);
+
+        const response = await flightRepository.getFlight(id);
         return response;
 
     } catch (error) {
@@ -96,8 +96,43 @@ async function getFlight(id) {
 
 }
 
+async function updateSeats(data) {
+
+    try {
+
+        const response = await flightRepository.updateReaminigSeats(
+            data.flightId,
+            data.seats,
+            data.decrease);
+
+        return response;
+
+    } catch (error) {
+
+        if (error.name == 'SequelizeValidationError') {
+
+            let explanation = [];
+
+            error.errors.forEach((err) => {
+                explanation.push(err.message);
+            });
+
+
+            Logger.error({ message: "Something went wrong doing validation", error: error });
+
+            throw new AppError(StatusCodes.BAD_REQUEST, "Something went wrong doing validation", explanation);
+        }
+
+        Logger.error({ message: "Cannot update a flight", error: error });
+        throw new InternalServerError("Cannot update a flight object");
+
+    }
+
+}
+
 module.exports = {
     createFlight,
     getAllFlights,
-    getFlight
+    getFlight,
+    updateSeats
 }
