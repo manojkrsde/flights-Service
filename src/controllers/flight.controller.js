@@ -62,7 +62,32 @@ async function getAllFlights(req, res, next) {
     }
 }
 
+
+
+/**
+ * Get Request : /api/v1/flights/:id
+ * Request Body -> {}
+ */
+
+async function getFlight(req, res, next) {
+    try {
+        const response = await FlightService.getFlight(req.params.id);
+
+        SuccessResponse.data = response;
+        SuccessResponse.statusCode = StatusCodes.OK;
+        SuccessResponse.message = "Flight fetched successfully";
+
+        return res
+            .status(SuccessResponse.statusCode)
+            .json(SuccessResponse);
+
+    } catch (error) {
+        next(error);
+    }
+}
+
 module.exports = {
     createFlight,
-    getAllFlights
+    getAllFlights,
+    getFlight
 }

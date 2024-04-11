@@ -14,7 +14,6 @@ async function createFlight(data) {
         return response;
     } catch (error) {
 
-
         if (error.name == 'SequelizeValidationError') {
 
             let explanation = [];
@@ -46,7 +45,6 @@ async function getAllFlights(query) {
 
     } catch (error) {
 
-        console.log(error);
 
         if (error.name == 'SequelizeValidationError') {
 
@@ -68,7 +66,38 @@ async function getAllFlights(query) {
 
 }
 
+async function getFlight(id) {
+
+    try {
+        const customFilter = FlightFilter.generateCustomFilter();
+        const response = await flightRepository.getFlight(id, customFilter);
+        return response;
+
+    } catch (error) {
+
+        if (error.name == 'SequelizeValidationError') {
+
+            let explanation = [];
+
+            error.errors.forEach((err) => {
+                explanation.push(err.message);
+            });
+
+
+            Logger.error({ message: "Something went wrong doing validation", error: error });
+
+            throw new AppError(StatusCodes.BAD_REQUEST, "Something went wrong doing validation", explanation);
+        }
+
+        Logger.error({ message: "Cannot get a flight", error: error });
+        throw new InternalServerError("Cannot get Flights");
+
+    }
+
+}
+
 module.exports = {
     createFlight,
-    getAllFlights
+    getAllFlights,
+    getFlight
 }

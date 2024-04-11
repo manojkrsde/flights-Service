@@ -48,7 +48,7 @@ const generateCustomFilter = (query) => {
         where: {}
     };
 
-    if (query.trips) {
+    if (query?.trips) {
         const [departureAirportCode, arrivalAirportCode] = query.trips.split('-');
 
         if (departureAirportCode === arrivalAirportCode) {
@@ -64,7 +64,7 @@ const generateCustomFilter = (query) => {
         }
     }
 
-    if (query.price) {
+    if (query?.price) {
         console.log(query.price);
         const [lowerLimit, upperLimit] = query.price.split('-');
 
@@ -84,7 +84,7 @@ const generateCustomFilter = (query) => {
 
     }
 
-    if (query.tripDate) {
+    if (query?.tripDate) {
 
         let endTimeAdder = ' 23:59:00';
         let recievedDate = query.tripDate;
@@ -98,13 +98,13 @@ const generateCustomFilter = (query) => {
     }
 
 
-    if (query.travellers) {
+    if (query?.travellers) {
         filterOptions.where['$AirplaneDetails.capacity$'] = {
             [Op.gte]: query.travellers,
         };
     }
 
-    if (query.sort) {
+    if (query?.sort) {
         let sortingParams = [];
         const sortingCriteria = query.sort.split(',');
 

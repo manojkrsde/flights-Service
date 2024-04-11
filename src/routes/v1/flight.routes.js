@@ -30,4 +30,14 @@ flightRoutes.get('/',
     FlightController.getAllFlights
 );
 
+
+/**
+ * GET Request
+ * /api/v1/flights/:id
+ */
+flightRoutes.get('/:id',
+    FlightController.getFlight
+);
+
+
 module.exports = flightRoutes;
