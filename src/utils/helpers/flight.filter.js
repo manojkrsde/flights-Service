@@ -7,8 +7,6 @@ const generateCustomFilter = (query) => {
 
     let filterOptions = {
 
-        attributes: ['id', 'flightNumber', 'arrivalTime', 'departureTime', 'price', 'boardingGate'],
-
         include: [
             {
                 model: Airplane,

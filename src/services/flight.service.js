@@ -13,6 +13,8 @@ async function createFlight(data) {
         const response = await flightRepository.create(data);
         return response;
     } catch (error) {
+
+
         if (error.name == 'SequelizeValidationError') {
 
             let explanation = [];
@@ -27,6 +29,7 @@ async function createFlight(data) {
             throw new AppError(StatusCodes.BAD_REQUEST, "Something went wrong doing validation", explanation);
         }
 
+        Logger.error({ message: "Cannot create a new Flight Object", error: error });
         throw new InternalServerError("Cannot create a new Flight Object");
 
     }
