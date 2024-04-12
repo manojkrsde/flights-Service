@@ -28,8 +28,8 @@ async function createFlight(data) {
             throw new AppError(StatusCodes.BAD_REQUEST, "Something went wrong doing validation", explanation);
         }
 
-        Logger.error({ message: "Cannot create a new Flight Object", error: error });
-        throw new InternalServerError("Cannot create a new Flight Object");
+        Logger.error({ message: "Cannot update seats in flight", error: error });
+        throw new InternalServerError("Cannot update seats in Flight Object");
 
     }
 
@@ -123,8 +123,8 @@ async function updateSeats(data) {
             throw new AppError(StatusCodes.BAD_REQUEST, "Something went wrong doing validation", explanation);
         }
 
-        Logger.error({ message: "Cannot update a flight", error: error });
-        throw new InternalServerError("Cannot update a flight object");
+        Logger.error({ message: "Cannot update seats in flight", error: error });
+        throw new InternalServerError("Cannot update seats in flight");
 
     }
 
