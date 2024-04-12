@@ -6,6 +6,8 @@ const { ErrorResponse } = require('./common');
 
 function errorHandler(err, req, res, next) {
 
+
+
     if (err instanceof BaseError) {
 
         ErrorResponse.statusCode = err.statusCode;

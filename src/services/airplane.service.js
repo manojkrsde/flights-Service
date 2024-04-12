@@ -4,7 +4,6 @@ const { StatusCodes } = require('http-status-codes');
 const { Logger } = require('../config');
 
 
-
 let airplaneRepository = new AirplaneRepository();
 
 async function createAirplane(data) {
