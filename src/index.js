@@ -19,6 +19,9 @@ app.use(express.text());
 // localhost:3000/api/
 app.use('/api', apiRouter);
 
+// localhost:3000/api/
+app.use('/flightService/api', apiRouter);
+
 //last middleware for handling errors
 app.use(errorHandler);
 

@@ -3,6 +3,7 @@ const { AppError } = require("../errors");
 
 function validateCreateRequest(req, res, next) {
 
+    console.log('Called airplane middleware .. ');
     if (!req.body.name || !req.body.modelNumber || !req.body.capacity) {
 
         let details = new Array();
@@ -21,6 +22,7 @@ function validateCreateRequest(req, res, next) {
 
         throw new AppError(StatusCodes.BAD_REQUEST, "Please enter valid details", details);
     }
+
 
     next();
 }

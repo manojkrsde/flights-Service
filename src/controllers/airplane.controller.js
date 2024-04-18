@@ -12,6 +12,7 @@ async function createAirplane(req, res, next) {
 
     try {
         const airplane = await AirplaneService.createAirplane({
+            name: req.body.name,
             modelNumber: req.body.modelNumber,
             capacity: req.body.capacity
         });
@@ -107,6 +108,7 @@ async function updateAirplane(req, res, next) {
 
     try {
         const airplane = await AirplaneService.updateAirplane(req.params.id, {
+            name: req.body.name,
             modelNumber: req.body.modelNumber,
             capacity: req.body.capacity
         });
