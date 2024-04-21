@@ -151,6 +151,8 @@ The `src` folder houses all the actual source code of the project, excluding any
 
 The project uses a relational database to store data for various entities:
 
+**DATABASE NAME** : `FlightsDB`
+
 ---
 
 - **Flights** ✈️: Stores flights information such as flightNumber, arrival time, remaining seats, etc.
@@ -257,8 +259,6 @@ The project uses a relational database to store data for various entities:
 ### 🌐 API Calls
 
 The API endpoints use different `HTTP` methods(`GET`, `POST`, `PUT`, `DELETE`) and follow `RESTful` design principles.
-
----
 
 The project provides a variety of API endpoints for different functionalities:
 
